@@ -11,10 +11,12 @@ class Car {
         this.angle = 0
 
         this.controls = new Controls()
+        this.sensor = new Sensor(this)
     }
 
     update () {
        this.#move()
+       this.sensor.update()
     }
 
     #move(){
@@ -59,7 +61,8 @@ class Car {
         )
 
         ctx.fill()
-
         ctx.restore()
+
+        this.sensor.draw(ctx)
     }
 }

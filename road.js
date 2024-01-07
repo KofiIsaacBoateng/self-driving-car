@@ -10,13 +10,25 @@ class Road {
         const INFINITY = 1000000
         this.top = -INFINITY
         this.bottom = INFINITY
+
+
+        // border specifications
+        const topLeft = {x: this.left, y: this.top}
+        const bottomLeft = {x: this.left, y: this.bottom} 
+        const topRight = {x: this.right, y: this.top}
+        const bottomRight = {x: this.right, y: this.bottom}
+
+        this.borders = [
+            [topLeft, bottomLeft],
+            [topRight, bottomRight]
+        ]
     }
 
     getLaneCenter(laneIndex) {
         /** Lane index starts from the first natural number: 1 */
         laneIndex = laneIndex < 1 ? 1: laneIndex
         const laneWidth = this.width / this.laneCount
-        return laneWidth / 2  + laneWidth * (Math.min(this.laneCount, laneIndex) - 1) + 10
+        return this.left + laneWidth / 2  + laneWidth * (Math.min(this.laneCount, laneIndex) - 1)
     }
 
     draw(ctx) {
