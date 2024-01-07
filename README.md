@@ -3,9 +3,10 @@
 
 ###  APPLICATION TODO
 
-- [ ] Environment
+- [x] Environment
 
 - [ ] Car
+    - [x] Look-alike (rectangle)
     - [ ] Vertical Movement
     - [ ] Horizontal Movement
     - [ ] Acceleration and Braking
