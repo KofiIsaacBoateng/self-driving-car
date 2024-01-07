@@ -12,6 +12,13 @@ class Road {
         this.bottom = INFINITY
     }
 
+    getLaneCenter(laneIndex) {
+        /** Lane index starts from the first natural number: 1 */
+        laneIndex = laneIndex < 1 ? 1: laneIndex
+        const laneWidth = this.width / this.laneCount
+        return laneWidth / 2  + laneWidth * (Math.min(this.laneCount, laneIndex) - 1) + 10
+    }
+
     draw(ctx) {
         ctx.strokeStyle = '#fff'
         ctx.lineWidth = 5
