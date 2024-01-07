@@ -7,9 +7,9 @@
 
 - [ ] Car
     - [x] Look-alike (rectangle)
-    - [ ] Vertical Movement
-    - [ ] Horizontal Movement
-    - [ ] Acceleration and Braking
+    - [x] Vertical Movement
+    - [x] Horizontal Movement
+    - [x] Acceleration and Braking
     - [ ] Sensors
 
 - [ ] Road
