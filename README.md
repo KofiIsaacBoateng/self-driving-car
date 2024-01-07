@@ -12,8 +12,8 @@
     - [x] Acceleration and Braking
     - [ ] Sensors
 
-- [ ] Road
-    - [ ] Borders
-    - [ ] Lanes
+- [x] Road
+    - [x] Borders
+    - [x] Lanes
 
 - [ ] Collision detection
