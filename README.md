@@ -18,5 +18,5 @@
 
 - [ ] Sensors
     - [x] Unlimited Spread
-    - [ ] Border Detection
+    - [x] Border Detection
     - [ ] Out-of-bound Recognition
