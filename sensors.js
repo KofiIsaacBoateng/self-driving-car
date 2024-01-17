@@ -1,7 +1,7 @@
 class Sensor {
     constructor(car) {
         this.car = car
-        this.rayCount = 30
+        this.rayCount = 50
         this.raySpread = Math.PI / 2
         this.rayLength = 120
 
@@ -20,20 +20,31 @@ class Sensor {
     }
 
     #getIntersectionReading(ray, roadBorders){
+        let touches = []
         for (let i = 0; i < roadBorders.length; i++) {
             const touch = getIntersection(
                 ray[0],
                 ray[1],
-                roadBorders[0],
-                roadBorders[1]
+                roadBorders[i][0],
+                roadBorders[i][1]
             )
 
             if (touch) {
-                this.readings.push(touch)
+                touches.push(touch)
             }
-
-            // console.log(this.readings)
         }
+
+        if (touches.length === 0) {
+            return null
+        }else {
+            const offsets = touches.map(e => e.offset)
+            const minOffset = Math.min(...offsets)
+            return touches.find(e => e.offset === minOffset)
+        }
+
+
+
+        return minTouch
     }
 
     #castRays() {
@@ -64,13 +75,28 @@ class Sensor {
 
     draw(ctx) {
         for(let i = 0; i < this.rays.length; i++ ){
+            let end = this.rays[i][1]
+
+            if (this.readings[i]){
+                end = this.readings[i]
+            }
+
             ctx.beginPath()
             ctx.strokeStyle = 'yellow'
-            ctx.strokeWidth = 2
+            ctx.lineWidth = 2
 
             ctx.moveTo(this.rays[i][0].x, this.rays[i][0].y)
+            ctx.lineTo(end.x, end.y)
+            ctx.stroke()
+
+            ctx.beginPath() 
+            ctx.lineWidth = 2
+            ctx.strokeStyle = 'red'
+
+            ctx.moveTo(end.x, end.y)
             ctx.lineTo(this.rays[i][1].x, this.rays[i][1].y)
             ctx.stroke()
+
         }
     }
 }
