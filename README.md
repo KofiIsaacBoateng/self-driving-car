@@ -16,4 +16,7 @@
     - [x] Borders
     - [x] Lanes
 
-- [ ] Collision detection
+- [ ] Sensors
+    - [x] Unlimited Spread
+    - [ ] Border Detection
+    - [ ] Out-of-bound Recognition
