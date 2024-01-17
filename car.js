@@ -11,12 +11,12 @@ class Car {
         this.angle = 0
 
         this.controls = new Controls()
-        this.sensor = new Sensor(this)
+        this.sensors = new Sensor(this)
     }
 
-    update () {
+    update (roadBorders) {
        this.#move()
-       this.sensor.update()
+       this.sensors.update(roadBorders)
     }
 
     #move(){
@@ -41,6 +41,7 @@ class Car {
             if (this.controls.left) this.angle -= 0.01 * flip
             if (this.controls.right) this.angle += 0.01 * flip
         }
+
         
         this.x += Math.sin(this.angle) * this.speed
         this.y -= Math.cos(this.angle) * this.speed
@@ -51,7 +52,7 @@ class Car {
         ctx.translate(this.x, this.y)
         ctx.rotate(this.angle)
         ctx.beginPath()
-        ctx.color = 'black'
+        ctx.fillStyle = '#939274'
 
         ctx.rect(
             - this.width / 2,
@@ -63,6 +64,7 @@ class Car {
         ctx.fill()
         ctx.restore()
 
-        this.sensor.draw(ctx)
+        this.sensors.draw(ctx)
+
     }
 }
